@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { readDoctors, writeDoctors, extractFirstName } = require('../utils/doctorUtils');
+const { filterAndSortDoctors } = require('../utils/filterdoctor');
 
 // POST /api/doctor/login
 router.post('/login', (req, res) => {
@@ -61,5 +62,21 @@ router.get('/all', (req, res) => {
     res.status(500).json({ message: 'Failed to load doctors.' });
   }
 });
+
+//api to get all the doctors based on pincode and age group
+router.get('/getDoctors', async (req, res) => {
+  const { pincode, age } = req.query;
+
+  try {
+    const doctorList = readDoctors(); 
+    console.log(doctorList[0]);
+    const sortedDoctors = await filterAndSortDoctors(doctorList, pincode, age);
+    res.json(sortedDoctors);
+  } catch (err) {
+    console.error('Error fetching doctors:', err);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
+});
+
 
 module.exports = router;
