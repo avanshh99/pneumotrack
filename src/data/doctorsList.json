@@ -1,0 +1,517 @@
+[
+    {
+      "id": 1,
+      "name": "Dr. S P Rai",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 42,
+      "age_groups": ["Child", "Adolescent", "Adult", "Senior"],
+      "location": {
+        "area": "Andheri West",
+        "latitude": 19.1197,
+        "longitude": 72.8463
+      },
+      "contact": {
+        "phone": "+91-22-30696969",
+        "email": "sp.rai@kokilabenhospital.com"
+      },
+      "hospital": "Kokilaben Dhirubhai Ambani Hospital",
+      "consultation_fee": 2000,
+      "availability": ["Monday", "Wednesday", "Friday"]
+    },
+    {
+      "id": 2,
+      "name": "Dr. Indu Bubna",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 15,
+      "age_groups": ["Adolescent", "Adult", "Senior"],
+      "location": {
+        "area": "Malad West",
+        "latitude": 19.1860,
+        "longitude": 72.8484
+      },
+      "contact": {
+        "phone": "+91-22-28886655",
+        "email": "indu.bubna@lungcareclinic.com"
+      },
+      "hospital": "Lung Care Clinic",
+      "consultation_fee": 1500,
+      "availability": ["Tuesday", "Thursday", "Saturday"]
+    },
+    {
+      "id": 3,
+      "name": "Dr. Prashant N. Chhajed",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 25,
+      "age_groups": ["Adult", "Senior"],
+      "location": {
+        "area": "Vile Parle West",
+        "latitude": 19.1032,
+        "longitude": 72.8365
+      },
+      "contact": {
+        "phone": "+91-22-26101111",
+        "email": "prashant.chhajed@lungcare.in"
+      },
+      "hospital": "Fortis Hospital",
+      "consultation_fee": 1800,
+      "availability": ["Monday", "Wednesday", "Friday"]
+    },
+    {
+      "id": 4,
+      "name": "Dr. Parthiv Shah",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 8,
+      "age_groups": ["Child", "Adolescent", "Adult"],
+      "location": {
+        "area": "Ghatkopar East",
+        "latitude": 19.0853,
+        "longitude": 72.9090
+      },
+      "contact": {
+        "phone": "+91-22-25066666",
+        "email": "parthiv.shah@drparthivshah.com"
+      },
+      "hospital": "Dr. Parthiv Shah's Clinic",
+      "consultation_fee": 1200,
+      "availability": ["Monday", "Wednesday", "Friday"]
+    },
+    {
+      "id": 5,
+      "name": "Dr. Zarir Udwadia",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 30,
+      "age_groups": ["Adult", "Senior"],
+      "location": {
+        "area": "Mumbai Central",
+        "latitude": 18.9786,
+        "longitude": 72.8194
+      },
+      "contact": {
+        "phone": "+91-22-24106000",
+        "email": "zarir.udwadia@hindujahospital.com"
+      },
+      "hospital": "P.D. Hinduja National Hospital",
+      "consultation_fee": 2500,
+      "availability": ["Tuesday", "Thursday"]
+    },
+    {
+      "id": 6,
+      "name": "Dr. Prasad Solanki",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 25,
+      "age_groups": ["Adult", "Senior"],
+      "location": {
+        "area": "Shivaji Park",
+        "latitude": 19.0270,
+        "longitude": 72.8362
+      },
+      "contact": {
+        "phone": "+91-22-24440409",
+        "email": "prasad.solanki@thechestclinic.com"
+      },
+      "hospital": "The Chest Clinic",
+      "consultation_fee": 1500,
+      "availability": ["Monday", "Wednesday", "Friday"]
+    },
+    {
+      "id": 7,
+      "name": "Dr. Mehul Thakkar",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 18,
+      "age_groups": ["Child", "Adolescent", "Adult"],
+      "location": {
+        "area": "Mulund West",
+        "latitude": 19.1726,
+        "longitude": 72.9426
+      },
+      "contact": {
+        "phone": "+91-22-25600000",
+        "email": "mehul.thakkar@medanshhospital.com"
+      },
+      "hospital": "Medansh Multispeciality Hospital",
+      "consultation_fee": 1000,
+      "availability": ["Tuesday", "Thursday", "Saturday"]
+    },
+    {
+      "id": 8,
+      "name": "Dr. Dilip Maydeo",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 42,
+      "age_groups": ["Adult", "Senior"],
+      "location": {
+        "area": "Ghatkopar West",
+        "latitude": 19.0860,
+        "longitude": 72.9095
+      },
+      "contact": {
+        "phone": "+91-22-25100000",
+        "email": "dilip.maydeo@dilipmaydeoclinic.com"
+      },
+      "hospital": "Dr. Dilip Maydeo Clinic",
+      "consultation_fee": 800,
+      "availability": ["Monday", "Wednesday", "Friday"]
+    },
+    {
+      "id": 9,
+      "name": "Dr. Ravikanth Bhat",
+      "specialty": "Pulmonologist",
+      "years_of_experience": 49,
+      "age_groups": ["Adult", "Senior"],
+      "location": {
+        "area": "Vile Parle East",
+        "latitude": 19.0985,
+        "longitude": 72.8510
+      },
+      "contact": {
+        "phone": "+91-22-26150000",
+        "email": "ravikanth.bhat@drbhatsclinic.com"
+      },
+      "hospital": "Dr. Bhat's Clinic",
+      "consultation_fee": 1500,
+      "availability": ["Tuesday", "Thursday"]
+    },
+    {
+        "id": 1,
+        "name": "Dr. S P Rai",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 42,
+        "age_groups": ["Child", "Adolescent", "Adult", "Senior"],
+        "location": {
+          "area": "Andheri West",
+          "latitude": 19.1197,
+          "longitude": 72.8463
+        },
+        "contact": {
+          "phone": "+91-22-30696969",
+          "email": "sp.rai@kokilabenhospital.com"
+        },
+        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
+        "consultation_fee": 2000,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 2,
+        "name": "Dr. Indu Bubna",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 15,
+        "age_groups": ["Adolescent", "Adult", "Senior"],
+        "location": {
+          "area": "Malad West",
+          "latitude": 19.1860,
+          "longitude": 72.8484
+        },
+        "contact": {
+          "phone": "+91-22-28886655",
+          "email": "indu.bubna@lungcareclinic.com"
+        },
+        "hospital": "Lung Care Clinic",
+        "consultation_fee": 1500,
+        "availability": ["Tuesday", "Thursday", "Saturday"]
+      },
+      {
+        "id": 3,
+        "name": "Dr. Prashant N. Chhajed",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 25,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Vile Parle West",
+          "latitude": 19.1032,
+          "longitude": 72.8365
+        },
+        "contact": {
+          "phone": "+91-22-26101111",
+          "email": "prashant.chhajed@lungcare.in"
+        },
+        "hospital": "Fortis Hospital",
+        "consultation_fee": 1800,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 4,
+        "name": "Dr. Parthiv Shah",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 8,
+        "age_groups": ["Child", "Adolescent", "Adult"],
+        "location": {
+          "area": "Ghatkopar East",
+          "latitude": 19.0853,
+          "longitude": 72.9090
+        },
+        "contact": {
+          "phone": "+91-22-25066666",
+          "email": "parthiv.shah@drparthivshah.com"
+        },
+        "hospital": "Dr. Parthiv Shah's Clinic",
+        "consultation_fee": 1200,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 5,
+        "name": "Dr. Zarir Udwadia",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 30,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Mumbai Central",
+          "latitude": 18.9786,
+          "longitude": 72.8194
+        },
+        "contact": {
+          "phone": "+91-22-24106000",
+          "email": "zarir.udwadia@hindujahospital.com"
+        },
+        "hospital": "P.D. Hinduja National Hospital",
+        "consultation_fee": 2500,
+        "availability": ["Tuesday", "Thursday"]
+      },
+      {
+        "id": 6,
+        "name": "Dr. Arvind H. Kate",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 17,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Chembur",
+          "latitude": 19.0626,
+          "longitude": 72.9000
+        },
+        "contact": {
+          "phone": "+91-22-25290000",
+          "email": "arvind.kate@zenhospital.com"
+        },
+        "hospital": "Zen Multispecialty Hospital",
+        "consultation_fee": 800,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 7,
+        "name": "Dr. Avya Bansal",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 10,
+        "age_groups": ["Adolescent", "Adult", "Senior"],
+        "location": {
+          "area": "Bandra West",
+          "latitude": 19.0550,
+          "longitude": 72.8295
+        },
+        "contact": {
+          "phone": "+91-22-26430000",
+          "email": "avya.bansal@bombayhospital.com"
+        },
+        "hospital": "Bombay Hospital & Medical Research Centre",
+        "consultation_fee": 2000,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 8,
+        "name": "Dr. Aditya S Agrawal",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 17,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Opera House",
+          "latitude": 18.9543,
+          "longitude": 72.8170
+        },
+        "contact": {
+          "phone": "+91-22-23690000",
+          "email": "aditya.agrawal@wockhardthospitals.com"
+        },
+        "hospital": "Wockhardt Hospitals",
+        "consultation_fee": 1500,
+        "availability": ["Tuesday", "Thursday", "Saturday"]
+      },
+      {
+        "id": 9,
+        "name": "Dr. Vikas Punamiya",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 15,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Girgaon",
+          "latitude": 18.9540,
+          "longitude": 72.8120
+        },
+        "contact": {
+          "phone": "+91-22-23855555",
+          "email": "vikas.punamiya@reliancehospitals.com"
+        },
+        "hospital": "Sir HN Reliance Foundation Hospital",
+        "consultation_fee": 1800,
+        "availability": ["Monday", "Wednesday","Fridat"]
+    },
+    {
+        "id": 1,
+        "name": "Dr. S P Rai",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 42,
+        "age_groups": ["Child", "Adolescent", "Adult", "Senior"],
+        "location": {
+          "area": "Andheri West",
+          "latitude": 19.1197,
+          "longitude": 72.8463
+        },
+        "contact": {
+          "phone": "+91-22-30696969",
+          "email": "sp.rai@kokilabenhospital.com"
+        },
+        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
+        "consultation_fee": 2000,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 2,
+        "name": "Dr. Indu Bubna",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 23,
+        "age_groups": ["Adolescent", "Adult", "Senior"],
+        "location": {
+          "area": "Malad West",
+          "latitude": 19.1860,
+          "longitude": 72.8484
+        },
+        "contact": {
+          "phone": "+91-22-28886655",
+          "email": "indu.bubna@lungcareclinic.com"
+        },
+        "hospital": "Lung Care Clinic",
+        "consultation_fee": 1500,
+        "availability": ["Tuesday", "Thursday", "Saturday"]
+      },
+      {
+        "id": 3,
+        "name": "Dr. Prashant Chhajed",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 25,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Vile Parle West",
+          "latitude": 19.1032,
+          "longitude": 72.8365
+        },
+        "contact": {
+          "phone": "+91-22-26101111",
+          "email": "prashant.chhajed@fortishospital.com"
+        },
+        "hospital": "Fortis Hospital",
+        "consultation_fee": 1800,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 4,
+        "name": "Dr. Parthiv Shah",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 8,
+        "age_groups": ["Child", "Adolescent", "Adult"],
+        "location": {
+          "area": "Ghatkopar East",
+          "latitude": 19.0853,
+          "longitude": 72.9090
+        },
+        "contact": {
+          "phone": "+91-22-25066666",
+          "email": "parthiv.shah@drparthivshah.com"
+        },
+        "hospital": "Dr. Parthiv Shah's Clinic",
+        "consultation_fee": 1200,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 5,
+        "name": "Dr. Zarir Udwadia",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 30,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Mumbai Central",
+          "latitude": 18.9786,
+          "longitude": 72.8194
+        },
+        "contact": {
+          "phone": "+91-22-24106000",
+          "email": "zarir.udwadia@hindujahospital.com"
+        },
+        "hospital": "P.D. Hinduja National Hospital",
+        "consultation_fee": 2500,
+        "availability": ["Tuesday", "Thursday"]
+      },
+      {
+        "id": 6,
+        "name": "Dr. Arvind H. Kate",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 17,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Chembur",
+          "latitude": 19.0626,
+          "longitude": 72.9000
+        },
+        "contact": {
+          "phone": "+91-22-25290000",
+          "email": "arvind.kate@zenhospital.com"
+        },
+        "hospital": "Zen Multispecialty Hospital",
+        "consultation_fee": 800,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 7,
+        "name": "Dr. Avya Bansal",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 11,
+        "age_groups": ["Adolescent", "Adult", "Senior"],
+        "location": {
+          "area": "Bandra West",
+          "latitude": 19.0550,
+          "longitude": 72.8295
+        },
+        "contact": {
+          "phone": "+91-22-26430000",
+          "email": "avya.bansal@lungcareclinic.com"
+        },
+        "hospital": "Lung Care Clinic",
+        "consultation_fee": 2000,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      },
+      {
+        "id": 8,
+        "name": "Dr. Aditya Agrawal",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 17,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Opera House",
+          "latitude": 18.9543,
+          "longitude": 72.8170
+        },
+        "contact": {
+          "phone": "+91-22-23690000",
+          "email": "aditya.agrawal@wockhardthospitals.com"
+        },
+        "hospital": "Wockhardt Hospitals",
+        "consultation_fee": 1500,
+        "availability": ["Tuesday", "Thursday", "Saturday"]
+      },
+      {
+        "id": 9,
+        "name": "Dr. Vikas Punamiya",
+        "specialty": "Pulmonologist",
+        "years_of_experience": 15,
+        "age_groups": ["Adult", "Senior"],
+        "location": {
+          "area": "Girgaon",
+          "latitude": 18.9540,
+          "longitude": 72.8120
+        },
+        "contact": {
+          "phone": "+91-22-23855555",
+          "email": "vikas.punamiya@reliancehospitals.com"
+        },
+        "hospital": "Sir HN Reliance Foundation Hospital",
+        "consultation_fee": 1800,
+        "availability": ["Monday", "Wednesday", "Friday"]
+      }
+]
+   
+  
