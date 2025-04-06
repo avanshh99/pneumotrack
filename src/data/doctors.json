@@ -360,7 +360,7 @@
       "phone": "+91-22-26101111",
       "email": "prashant.chhajed@fortishospital.com"
     },
-    "hospital": "Fortis Hospital",
+    "hospital": "Lung Care Clinic",
     "consultation_fee": 1800,
     "availability": [
       "Monday",
@@ -406,19 +406,18 @@
     ],
     "location": {
       "area": "Opera House",
-      "latitude": 18.9543,
-      "longitude": 72.817
+      "latitude": 19.0063293313253,
+      "longitude": 72.92030169277109
     },
     "contact": {
-      "phone": "+91-22-23690000",
-      "email": "aditya.agrawal@wockhardthospitals.com"
+      "phone": "+022 6666 0000",
+      "email": "aditya.agrawal@bhatiathospital.org"
     },
-    "hospital": "Wockhardt Hospitals",
+    "hospital": "Bhatia Hospital",
     "consultation_fee": 1500,
     "availability": [
-      "Tuesday",
-      "Thursday",
-      "Saturday"
+      "Monday",
+      "Wednesday"
     ]
   }
 ]
