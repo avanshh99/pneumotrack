@@ -90,7 +90,7 @@ const Footer = () => {
               <li className="text-sm text-gray-300">
                 support@PneumoShield.com
               </li>
-              <li className="text-sm text-gray-300">+1 (555) 123-4567</li>
+              <li className="text-sm text-gray-300">+91 83723 45678</li>
             </ul>
             <div className="flex mt-4 space-x-4">
               <a href="#" className="text-gray-300 hover:text-white">
