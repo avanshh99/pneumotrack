@@ -2,23 +2,77 @@ import Layout from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Users, FileText, User, Calendar } from 'lucide-react';
-import { useState , useEffect} from 'react';
+import { Users, FileText, User, Calendar, LogOut } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const DoctorDashboard = () => {
+  const [doctorName, setDoctorName] = useState<string | null>(null);
+  const [doctorData, setDoctorData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [doctorName, setDoctorName] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-    const doctorData = localStorage.getItem("loggedInDoctor");
+  // useEffect(() => {
+  //   const token = localStorage.getItem('authToken');
+  //   if (!token) {
+  //     navigate('/login'); // Redirect to login if no token
+  //   }
+
+  //   const fetchDoctorData = async () => {
+  //     try {
+  //       const res = await fetch('http://localhost:5000/api/doctor/all', {
+  //         method: 'GET',
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+
+  //       if (!res.ok) {
+  //         throw new Error('Failed to fetch doctor data');
+  //       }
+
+  //       const data = await res.json();
+  //       setDoctorData(data);
+  //       setLoading(false);
+  //     } catch (err) {
+  //       console.error('Error fetching doctor data:', err);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchDoctorData();
+  // }, [navigate]);
+
+  useEffect(() => {
+    const doctorData = localStorage.getItem('loggedInDoctor');
+
     if (doctorData) {
+      try {
         const parsedDoctor = JSON.parse(doctorData);
-        setDoctorName(parsedDoctor.name); // Already has Dr. prefix
+        setDoctorName(parsedDoctor.name); // Assuming 'name' is a valid key
+      } catch (error) {
+        console.error('Error parsing doctor data:', error);
+        setDoctorName('Doctor');
+      }
     } else {
-        setDoctorName("Doctor");
+      console.log('No doctor data in localStorage');
+      setDoctorName('Doctor'); // Fallback name if nothing is found
     }
-    }, []);
+  }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('loggedInDoctor');
+    localStorage.removeItem('rememberedDoctorEmail');
+
+    toast.success('Logged out successfully!', {
+      duration: 1000,
+    });
+
+    navigate('/doctor-portal');
+  };
 
   const pendingCases = [
     {
@@ -72,10 +126,16 @@ const DoctorDashboard = () => {
     <Layout>
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
-          <h1 className="text-3xl font-bold mb-6 text-center animate-fade-in">
-            Welcome, {doctorName}
-          </h1>
-
+          <div className="flex items-center justify-center mb-6 animate-fade-in space-x-10">
+            <h1 className="text-3xl font-bold">Welcome, {doctorName}</h1>
+            <Button
+              onClick={handleLogout}
+              className="bg-pneumo-blue hover:bg-blue-500 text-white rounded-full w-12 h-12 flex items-center justify-center p-0"
+              title="Logout" // Tooltip for accessibility
+            >
+              <LogOut size={20} />
+            </Button>
+          </div>
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 animate-fade-in animate-delay-200">
             <div className="dark-card p-6">
               <h3 className="text-xl font-semibold mb-4">Dashboard Preview</h3>
