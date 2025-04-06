@@ -3,8 +3,23 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Users, FileText, User, Calendar } from 'lucide-react';
+import { useState , useEffect} from 'react';
 
 const DoctorDashboard = () => {
+
+    const [doctorName, setDoctorName] = useState<string | null>(null);
+
+    useEffect(() => {
+    const doctorData = localStorage.getItem("loggedInDoctor");
+    if (doctorData) {
+        const parsedDoctor = JSON.parse(doctorData);
+        setDoctorName(parsedDoctor.name); // Already has Dr. prefix
+    } else {
+        setDoctorName("Doctor");
+    }
+    }, []);
+
+
   const pendingCases = [
     {
       id: 1,
@@ -58,7 +73,7 @@ const DoctorDashboard = () => {
       <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <h1 className="text-3xl font-bold mb-6 text-center animate-fade-in">
-            Doctor Dashboard
+            Welcome, {doctorName}
           </h1>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 animate-fade-in animate-delay-200">

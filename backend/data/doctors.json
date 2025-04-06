@@ -420,5 +420,79 @@
       "Thursday",
       "Saturday"
     ]
+  },
+  {
+    "name": "Shyam Benegal",
+    "specialty": "Lungs Surgeon",
+    "years_of_experience": 10,
+    "age_groups": [
+      "Adult"
+    ],
+    "location": {
+      "area": "Mulund",
+      "latitude": 19.0626,
+      "longitude": 72.9
+    },
+    "contact": {
+      "phone": "8282839920",
+      "email": "shyam.benegal@leelavati.com"
+    },
+    "hospital": "Leelavati",
+    "consultation_fee": 2000,
+    "availability": [
+      "Monday",
+      "Wednesday"
+    ],
+    "id": 17
+  },
+  {
+    "name": "Pravin Kumar",
+    "specialty": "Pediatrician",
+    "years_of_experience": 10,
+    "age_groups": [
+      "Child",
+      "Adult"
+    ],
+    "location": {
+      "area": "Raigad",
+      "latitude": 41.3852806,
+      "longitude": 2.1697931
+    },
+    "contact": {
+      "phone": "8774289299",
+      "email": "pravin.kumar@gsmckem.com"
+    },
+    "hospital": "KEM",
+    "consultation_fee": 5000,
+    "availability": [
+      "Tuesday",
+      "Saturday"
+    ],
+    "id": 18
+  },
+  {
+    "name": "Ramesh Nair",
+    "specialty": "Heart Surgeon",
+    "years_of_experience": 8,
+    "age_groups": [
+      "Adult"
+    ],
+    "location": {
+      "area": "Parel",
+      "latitude": 19.0084268,
+      "longitude": 72.842505
+    },
+    "contact": {
+      "phone": "7482892290",
+      "email": "ramesh.nair@gmail.com"
+    },
+    "hospital": "Heart Surgeon",
+    "consultation_fee": 1200,
+    "availability": [
+      "Tuesday",
+      "Saturday",
+      "Wednesday"
+    ],
+    "id": 19
   }
 ]
