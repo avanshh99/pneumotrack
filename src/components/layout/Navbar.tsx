@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-xl font-bold text-pneumo-dark">
-            Pneumo<span className="text-pneumo-blue">Tack</span>
+            Pneumo<span className="text-pneumo-blue">Shield</span>
           </span>
         </Link>
 

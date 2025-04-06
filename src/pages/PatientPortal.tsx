@@ -236,7 +236,8 @@ const PatientPortal = () => {
                   </CardContent>
                 </Card>
                 
-                <div className="bg-pneumo-darkBlue text-white rounded-lg p-6 shadow-lg">
+                <div className="w-full flex justify-center">
+                <div className="bg-pneumo-darkBlue text-white rounded-lg p-6 shadow-lg max-w-md w-full">
                   <h3 className="font-semibold mb-4">Why Create an Account?</h3>
                   <ul className="space-y-3">
                     <li className="flex gap-3 items-start">
@@ -269,6 +270,7 @@ const PatientPortal = () => {
             </div>
           </div>
         </div>
+      </div>
       </section>
     </Layout>
   );

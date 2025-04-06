@@ -64,7 +64,7 @@ const HowItWorks = () => {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-xl shadow-sm p-6 md:p-10"
+                 className="bg-sky-100 border border-gray-200 rounded-2xl shadow-md p-6 md:p-10 transition hover:shadow-lg"
               >
                 {/* Pill Above Title */}
                 <div className="text-center mb-4">

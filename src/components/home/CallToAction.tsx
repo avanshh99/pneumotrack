@@ -39,8 +39,9 @@ const CallToAction = () => {
                 </Button>
               </Link>
               <Link to="/how-it-works" className="w-full md:w-auto">
-                <Button variant="outline" size="lg" className="w-full md:w-auto border-gray-500 text-white hover:bg-white/10">
+                <Button variant="outline" size="lg" className="w-full md:w-auto border-gray-500 text-black hover:bg-white/10">
                   Learn More
+                  <ArrowRight size={18} />
                 </Button>
               </Link>
             </div>
