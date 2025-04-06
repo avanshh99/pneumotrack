@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');  
 const { readDoctors, writeDoctors, extractFirstName } = require('../utils/doctorUtils');
+const config = require('../config/config');  
 
 // POST /api/doctor/login
 router.post('/login', (req, res) => {
@@ -10,22 +12,43 @@ router.post('/login', (req, res) => {
     return res.status(400).json({ success: false, message: 'Email and password required.' });
   }
 
-  const doctors = readDoctors();
-  const doctor = doctors.find(
-    (doc) => doc.contact?.email?.toLowerCase().trim() === email.toLowerCase().trim()
-  );
+  try {
+    const doctors = readDoctors();
+    const doctor = doctors.find(
+      (doc) => doc.contact?.email?.toLowerCase().trim() === email.toLowerCase().trim()
+    );
 
-  if (!doctor) {
-    return res.status(404).json({ success: false, message: 'Doctor not found.' });
+    if (!doctor || !doctor.contact?.email) {
+      return res.status(404).json({ success: false, message: 'Doctor not found.' });
+    }
+
+    const expectedPassword = `${extractFirstName(doctor.name)}_doc101`;
+
+    if (password !== expectedPassword) {
+      return res.status(401).json({ success: false, message: 'Incorrect password.' });
+    }
+
+    // JWT Token creation
+    const token = jwt.sign(
+      { id: doctor.id, email: doctor.contact.email },
+      config.jwtSecret,
+      { expiresIn: config.jwtExpirationTime }
+    );
+
+    return res.json({
+      success: true,
+      message: 'Login successful',
+      token,
+      doctorInfo: {
+        id: doctor.id,
+        name: doctor.name, // Ensure this is what you want
+        email: doctor.contact.email, // Add other relevant details
+      },
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ success: false, message: 'Internal server error.' });
   }
-
-  const expectedPassword = `${extractFirstName(doctor.name)}_doc101`;
-
-  if (password !== expectedPassword) {
-    return res.status(401).json({ success: false, message: 'Incorrect password.' });
-  }
-
-  return res.json({ success: true, doctor });
 });
 
 // POST /api/doctor/apply
@@ -52,7 +75,7 @@ router.post('/apply', (req, res) => {
   }
 });
 
-// GET /api/doctor/all
+// GET /api/doctor/all - Protected route, requires JWT token
 router.get('/all', (req, res) => {
   try {
     const doctors = readDoctors();
