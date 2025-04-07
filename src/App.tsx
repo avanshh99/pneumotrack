@@ -11,6 +11,8 @@ import PatientPortal from "./pages/PatientPortal";
 import DoctorPortal from "./pages/DoctorPortal";
 import NotFound from "./pages/NotFound";
 import DoctorDashboard from "./pages/DoctorDashboard";
+import PatientDashboard from "./pages/PatientDashboard";
+
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,7 @@ const App = () => (
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/patient-portal" element={<PatientPortal />} />
+          <Route path="/patient-dashboard" element={<PatientDashboard />} />
           <Route path="/doctor-portal" element={<DoctorPortalWithAuth />} />
           <Route
             path="/DoctorDashboard"
