@@ -32,21 +32,63 @@ const PatientDashboard = () => {
     }
   };
 
-  const handleAnalyze = () => {
-    if (!image || !preview) return;
-    setAnalyzing(true);
+  // const handleAnalyze = () => {
+  //   if (!image || !preview) return;
+  //   setAnalyzing(true);
 
-    setTimeout(() => {
+  //   setTimeout(() => {
+  //     const newRecord: UploadRecord = {
+  //       name: image.name,
+  //       url: preview,
+  //       timestamp: new Date().toLocaleString(),
+  //     };
+
+  //     setHistory((prev) => [newRecord, ...prev]);
+  //     alert("Analysis complete! (dummy response)");
+  //     setAnalyzing(false);
+  //   }, 1500);
+  // };
+  const handleAnalyze = async () => {
+    if (!image || !preview) return;
+  
+    setAnalyzing(true);
+  
+    try {
+      // Prepare the file for upload
+      const formData = new FormData();
+      formData.append("file", image);
+  
+      // Send the file to the backend
+      const response = await fetch("http://localhost:5000/api/upload-xray", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to analyze the image");
+      }
+  
+      // Parse the backend response
+      const result = await response.json();
+      console.log("Analysis Result:", result);
+  
+      // Add the result to the history
       const newRecord: UploadRecord = {
         name: image.name,
         url: preview,
         timestamp: new Date().toLocaleString(),
       };
-
+  
       setHistory((prev) => [newRecord, ...prev]);
-      alert("Analysis complete! (dummy response)");
+  
+      // Optionally, display the result to the user
+      alert(`Analysis complete! Diagnosis: ${result.diagnosis}`);
+    } catch (error) {
+      console.error("Error analyzing the image:", error);
+      alert("Failed to analyze the image. Please try again.");
+    } finally {
       setAnalyzing(false);
-    }, 1500);
+    }
   };
 
   return (
