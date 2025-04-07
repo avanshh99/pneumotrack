@@ -8,7 +8,7 @@ const PORT = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/doctor', doctorRoutes);
+app.use('/api/doctor', doctorRoutes); // api/doctor/getDoctors?pincode=<six-digit pin>&age=<integer>
 
 app.listen(PORT, () => {
   console.log(` Server running at http://localhost:${PORT}`);
