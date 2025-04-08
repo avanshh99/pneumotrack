@@ -1,32 +1,39 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');  
-const { readDoctors, writeDoctors, extractFirstName } = require('../utils/doctorUtils');
+const jwt = require('jsonwebtoken');
+const { readDoctors, writeDoctors, extractFirstName, filterDoctorsByAgeAndLocation,} = require('../utils/doctorUtils');
 const { filterAndSortDoctors } = require('../utils/filterdoctor');
-const config = require('../config/config');  
+const config = require('../config/config');
 
 // POST /api/doctor/login
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return res.status(400).json({ success: false, message: 'Email and password required.' });
+    return res
+      .status(400)
+      .json({ success: false, message: 'Email and password required.' });
   }
 
   try {
     const doctors = readDoctors();
     const doctor = doctors.find(
-      (doc) => doc.contact?.email?.toLowerCase().trim() === email.toLowerCase().trim()
+      doc =>
+        doc.contact?.email?.toLowerCase().trim() === email.toLowerCase().trim()
     );
 
     if (!doctor || !doctor.contact?.email) {
-      return res.status(404).json({ success: false, message: 'Doctor not found.' });
+      return res
+        .status(404)
+        .json({ success: false, message: 'Doctor not found.' });
     }
 
     const expectedPassword = `${extractFirstName(doctor.name)}_doc101`;
 
     if (password !== expectedPassword) {
-      return res.status(401).json({ success: false, message: 'Incorrect password.' });
+      return res
+        .status(401)
+        .json({ success: false, message: 'Incorrect password.' });
     }
 
     // JWT Token creation
@@ -48,7 +55,9 @@ router.post('/login', (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ success: false, message: 'Internal server error.' });
+    return res
+      .status(500)
+      .json({ success: false, message: 'Internal server error.' });
   }
 });
 
@@ -58,12 +67,14 @@ router.post('/apply', (req, res) => {
     const newDoctor = req.body;
     const doctors = readDoctors();
 
-    const exists = doctors.some((doc) => doc.contact.email === newDoctor.contact.email);
+    const exists = doctors.some(
+      doc => doc.contact.email === newDoctor.contact.email
+    );
     if (exists) {
       return res.status(400).json({ message: 'Doctor already exists.' });
     }
 
-    const maxId = Math.max(...doctors.map((doc) => doc.id), 0);
+    const maxId = Math.max(...doctors.map(doc => doc.id), 0);
     newDoctor.id = maxId + 1;
 
     doctors.push(newDoctor);
@@ -86,20 +97,20 @@ router.get('/all', (req, res) => {
   }
 });
 
-//api to get all the doctors based on pincode and age group
-router.get('/getDoctors', async (req, res) => {
-  const { pincode, age } = req.query;
+router.get('/getDoctors', (req, res) => {
+  const { age, location } = req.query;
+
+  if (!age || !location) {
+    return res.status(400).json({ message: 'Age and location are required.' });
+  }
 
   try {
-    const doctorList = readDoctors(); 
-    console.log(doctorList[0]);
-    const sortedDoctors = await filterAndSortDoctors(doctorList, pincode, age);
-    res.json(sortedDoctors);
+    const matchedDoctors = filterDoctorsByAgeAndLocation(age, location);
+    res.json(matchedDoctors);
   } catch (err) {
     console.error('Error fetching doctors:', err);
-    res.status(500).json({ error: 'Something went wrong' });
+    res.status(500).json({ message: 'Failed to fetch doctors.' });
   }
 });
-
 
 module.exports = router;

@@ -8,6 +8,7 @@ const readDoctors = () => {
   return JSON.parse(data);
 };
 
+
 const writeDoctors = (doctors) => {
   fs.writeFileSync(doctorsFilePath, JSON.stringify(doctors, null, 2));
 };
@@ -25,4 +26,34 @@ const extractFirstName = (fullName) => {
   return cleaned.toLowerCase();
 };
 
-module.exports = { readDoctors, writeDoctors, extractFirstName };
+const getAgeGroup = (age) => {
+  const a = parseInt(age);
+  if (a <= 12) return 'Child';
+  if (a <= 17) return 'Adolescent';
+  if (a <= 59) return 'Adult';
+  return 'Senior';
+};
+
+const filterDoctorsByAgeAndLocation = (age, area) => {
+  const doctors = readDoctors();
+  const ageGroup = getAgeGroup(age);
+
+  console.log('Doctors loaded:', doctors.length); 
+  const targetLocation = area?.toLowerCase().trim();
+
+  return doctors.filter((doc) => {
+    const docLocation = doc.location?.area?.toLowerCase().trim();
+    return (
+      docLocation === targetLocation &&
+      doc.age_groups.includes(ageGroup)
+    );
+  });
+};
+
+module.exports = {
+  readDoctors,
+  writeDoctors,
+  extractFirstName,
+  getAgeGroup,
+  filterDoctorsByAgeAndLocation,
+};
