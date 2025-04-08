@@ -89,6 +89,7 @@ const PatientDashboard = () => {
   const handleAnalyze = async () => {
     if (!image || !preview) return;
   
+  
     setAnalyzing(true);
     setShowAnalysisResult(false);
   
