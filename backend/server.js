@@ -6,6 +6,7 @@ const doctorRoutes = require('./routes/doctorRoutes');
 const xrayRoutes = require('./routes/xray'); // Assuming you have a file named xray.js in the routes folder
 const recordRoutes = require('./routes/recordRoutes'); // Assuming you have a file named record.js in the routes folder
 
+const doctorMapRoutes = require('./routes/doctorMap'); // Assuming you have a file named doctorMap.js in the routes folder  
 
 const app = express();
 const PORT = 5000;
@@ -24,6 +25,8 @@ app.use('/api/doctor', doctorRoutes); // api/doctor/getDoctors?pincode=<six-digi
 app.use('/api', xrayRoutes); // api/upload-xray
 
 app.use('/api', recordRoutes); // api/addRecord
+
+app.use('/api', doctorMapRoutes); // api/assignPatient
 
 //http://localhost:5000/api/getRecords/t1
 
