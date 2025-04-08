@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.env       # currently matches foo.env, bar.env, etc.
+.env        # add this to catch just `.env`
+.env.*      # add this to catch `.env.local`, `.env.dev`, etc.
