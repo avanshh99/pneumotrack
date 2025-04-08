@@ -34,25 +34,29 @@ async function getLatLonFromPincode(pincode) {
 
 // Main function: filters + sorts the doctors list
 async function filterAndSortDoctors(doctors, pincode, age) {
-    //Step 0: make age group from age
-    const ageGroup = age<12?"Child":age>12&&age<60?"Adult":"Senior";
-    // Step 1: Filter only those doctors who treat the given age group
-    const filtered = doctors.filter(doc => doc.age_groups.includes(ageGroup));
-
-    const userLocation = await getLatLonFromPincode(pincode);
-    if (!userLocation) {
-      console.error('Invalid pincode or location not found');
-      return filtered; // Return the filtered list without sorting
-    }
-    // Step 2: Sort the filtered list based on distance from the user
-    const sorted = filtered
-      .map(doc => {
-        const distance_km = getDistance(userLocation.lat, userLocation.lon, doc.latitude, doc.longitude);
-        return { ...doc, distance_km };
-      })
-      .sort((a, b) => a.distance_km - b.distance_km); // nearest first
   
-    return sorted;
+  const ageGroup = age < 12 ? "Child" : age < 60 ? "Adult" : "Senior";
+  const filtered = doctors.filter(doc => doc.age_groups.includes(ageGroup));
+
+  const userLocation = await getLatLonFromPincode(pincode);
+  if (!userLocation) {
+    console.error("Invalid pincode or location not found");
+    return filtered;
+  }
+
+  const sorted = filtered
+    .map(doc => {
+      const distance_km = getDistance(
+        userLocation.lat,
+        userLocation.lon,
+        doc.location.latitude,
+        doc.location.longitude
+      );
+      return { ...doc, distance_km };
+    })
+    .sort((a, b) => a.distance_km - b.distance_km); // nearest first
+
+  return sorted;
 }
 
 module.exports = { filterAndSortDoctors};
