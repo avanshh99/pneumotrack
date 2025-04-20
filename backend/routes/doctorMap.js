@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const router = express.Router();
 
-const mapFilePath = path.join(__dirname, '../data/doctorPatientMap.json');
+const mapFilePath = path.join(__dirname, '../data/doctorPatientMap.json');// path for doctor and patient mapping, patients which are assigned.
 
 // Ensure JSON file exists
 if (!fs.existsSync(mapFilePath)) {

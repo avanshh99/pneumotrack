@@ -69,3 +69,4 @@
 // const outputFilePath = 'uniqueDoctorsList.json'; // Path for the output JSON file
 
 // processDoctors(inputFilePath, outputFilePath);
+console.log("used this function to sort the doctors but now it has been taken care of so no need to worry");

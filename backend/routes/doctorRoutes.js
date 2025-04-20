@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { readDoctors, writeDoctors, extractFirstName, filterDoctorsByAgeAndLocation,} = require('../utils/doctorUtils');
 const { filterAndSortDoctors } = require('../utils/filterdoctor');
 const config = require('../config/config');
+const Doctor = require('../models/doctor');
 
 // POST /api/doctor/login
 router.post('/login', (req, res) => {

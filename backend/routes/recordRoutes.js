@@ -43,65 +43,45 @@ router.post('/addRecord', upload.fields([
 
 // GET: Single record by ID
 router.get('/getRecord/:id', async (req, res) => {
+  console.log(req.params);
   try {
     const record = await Record.findById(req.params.id);
-
     if (!record) return res.status(404).json({ message: 'Record not found' });
 
+    console.log(record.userId);
     const responseData = {
       userId: record.userId,
       name: record.name,
       age: record.age,
       pincode: record.pincode,
       xrayDate: record.xrayDate,
-      xrayReport: {
-        contentType: record.xrayReport.contentType,
-        base64: record.xrayReport.data.toString('base64'),
-      },
-      xrayImage: {
-        contentType: record.xrayImage.contentType,
-        base64: record.xrayImage.data.toString('base64'),
-      },
+      xrayReport: record.xrayReport?.data
+        ? {
+            contentType: record.xrayReport.contentType,
+            base64: record.xrayReport.data.toString('base64'),
+          }
+        : null,
+      xrayImage: record.xrayImage?.data
+        ? {
+            contentType: record.xrayImage.contentType,
+            base64: record.xrayImage.data.toString('base64'),
+          }
+        : null,
     };
-
+    console.log(responseData);
     res.json(responseData);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
   }
 });
 
-// GET: All records for a user
-// router.get('/getRecords/:userId', async (req, res) => {
-//   try {
-//     const records = await Record.find({ userId: req.params.userId });
-
-//     const formattedRecords = records.map(record => ({
-//       _id: record._id,
-//       name: record.name,
-//       age: record.age,
-//       pincode: record.pincode,
-//       xrayDate: record.xrayDate,
-//       xrayReport: {
-//         contentType: record.xrayReport.contentType,
-//         base64: record.xrayReport.data.toString('base64'),
-//       },
-//       xrayImage: {
-//         contentType: record.xrayImage.contentType,
-//         base64: record.xrayImage.data.toString('base64'),
-//       },
-//     }));
-
-//     res.json(formattedRecords);
-//   } catch (error) {
-//     res.status(500).json({ message: 'Server error', error });
-//   }
-// });
 router.get('/getRecords/:userId', async (req, res) => {
     try {
-      const records = await Record.find({ userId: req.params.userId });
+      const records = await Record.find({ userId: req.params.userId }); // Fetch records by userId but I want to change this to use mongodb userid in future but sinces users collection is not created yet so I am using this for now
   
       const formattedRecords = records.map(record => ({
         _id: record._id,
+        userId: record.userId,
         name: record.name,
         age: record.age,
         pincode: record.pincode,
