@@ -9,7 +9,7 @@ const fs = require('fs');
 const upload = multer({ dest: 'uploads/' });
 
 // POST endpoint to handle file upload and forward to 3rd-party API
-router.post('/upload-xray', upload.single('file'), async (req, res) => {
+router.post('/upload-xray', upload.single('xrayImage'), async (req, res) => {
   try {
     const file = req.file;
 

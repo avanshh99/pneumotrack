@@ -23,21 +23,26 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
-
+app.use((req, res, next) => {
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+  // console.log('Request Body:', req.body);
+  next();
+});
 
 app.use('/data', express.static(path.join(__dirname, 'data')));
 app.use('/api/doctor', doctorRoutes); // api/doctor/getDoctors?pincode=<six-digit pin>&age=<integer>
-app.use('/api/docauth/', doctorAuth); // api/docauth/signup or api/docauth/login
+// app.use('/api/docauth/', doctorAuth); // api/docauth/signup or api/docauth/login
 
 app.use('/api', xrayRoutes); // api/upload-xray
 
 app.use('/api', recordRoutes); // api/addRecord
 
-// app.use('/api', doctorMapRoutes); // api/assignPatient remove this later // todo 
+// app.use('/api/doctor', doctorMapRoutes); // api/assignPatient remove this later // todo 
 
 app.use('/api',doctorRecordRoutes); // api/assignRecord
 
 app.use('/api/users',userAuth);
+
 
 //http://localhost:5000/api/getRecords/t1
 

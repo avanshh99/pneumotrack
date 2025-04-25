@@ -4,13 +4,20 @@ const mongoose = require('mongoose');
 
 const DoctorConsultation = require('../models/DoctorConsultation'); // MongoDB model
 const Record = require('../models/record'); // Record model 
+// 
 
 // POST route to assign a record to a doctor
 router.post('/assignRecord', async (req, res) => {
   const { doctorId, recordId } = req.body;
 
+  // Check if fields are provided
   if (!doctorId || !recordId) {
     return res.status(400).json({ message: 'doctorId and recordId are required' });
+  }
+
+  // Validate ObjectId format
+  if (!mongoose.Types.ObjectId.isValid(doctorId) || !mongoose.Types.ObjectId.isValid(recordId)) {
+    return res.status(400).json({ message: 'Invalid doctorId or recordId format' });
   }
 
   try {
@@ -33,9 +40,11 @@ router.post('/assignRecord', async (req, res) => {
     await doctorMap.save();
     res.status(200).json({ message: 'Record assigned successfully', doctorMap });
   } catch (error) {
+    console.error('Error assigning record:', error);
     res.status(500).json({ message: 'Error assigning record', error: error.message });
   }
 });
+
 
 // 🆕 GET route to fetch all records assigned to a doctor
 router.get('/records/:doctorId', async (req, res) => {
@@ -86,5 +95,56 @@ router.delete('/removeRecord', async (req, res) => {
     }
   });
   
+
+
+  router.get('/consultations/:doctorId', async (req, res) => {
+    try {
+      const consultation = await DoctorConsultation.findOne({ doctorId: req.params.doctorId }).lean();
+      if (!consultation) {
+        return res.status(404).json({ message: 'Consultation not found' });
+      }
+  
+      // Ensure recordIds is an array of strings (ObjectIds)
+      const responseData = {
+        _id: consultation._id.toString(),
+        doctorId: consultation.doctorId.toString(),
+        recordIds: consultation.recordIds.map(recordId => String(recordId)), // Convert ObjectIds to strings
+        createdAt: consultation.createdAt.toISOString(),
+      };
+  
+      console.log('Consultation response:', responseData);
+      res.json(responseData);
+    } catch (err) {
+      console.error('Error fetching consultation:', err);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+  
+  
+  router.post('/submitFeedback', async (req, res) => {
+    const { recordId, feedback } = req.body;
+  
+    try {
+      // Validate request body
+      if (!recordId || !feedback) {
+        return res.status(400).json({ message: 'recordId and feedback are required' });
+      }
+  
+      // Update the specific record's status and feedback
+      const record = await Record.findById(recordId);
+      if (!record) {
+        return res.status(404).json({ message: 'Record not found' });
+      }
+  
+      record.status = 'Resolved';
+      record.doctorFeedback = feedback;
+      await record.save();
+  
+      res.status(200).json({ message: 'Feedback submitted successfully' });
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      res.status(500).json({ message: 'Server error', error: error.message });
+    }
+  });
 
 module.exports = router;

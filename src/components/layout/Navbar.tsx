@@ -1,9 +1,23 @@
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Stethoscope, User } from "lucide-react";
+import { Stethoscope, User, LogOut } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); // Set to true if token exists, false otherwise
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('isPatient'); // Remove patient-specific flag if exists
+    navigate('/');
+  };
+
   return (
     <nav className="py-4 backdrop-blur-md bg-white/80 border-b border-gray-100 sticky top-0 z-50 w-full">
       <div className="container flex items-center justify-between">
@@ -41,6 +55,15 @@ const Navbar = () => {
               <span className="hidden sm:inline">Patient</span>
             </Button>
           </Link>
+          {isLoggedIn && (
+            <Button
+              onClick={handleLogout}
+              className="bg-red-500 hover:bg-red-600 text-white flex items-center gap-2"
+            >
+              <LogOut size={16} />
+              <span className="hidden sm:inline">Logout</span>
+            </Button>
+          )}
         </div>
       </div>
     </nav>
