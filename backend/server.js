@@ -9,7 +9,7 @@ const recordRoutes = require('./routes/recordRoutes'); // Assuming you have a fi
 // const doctorMapRoutes = require('./routes/doctorMap'); // Assuming you have a file named doctorMap.js in the routes folder  
 const doctorRecordRoutes = require('./routes/doctorRecord'); // Assuming you have a file named doctorRecord.js in the routes folder
 
-const doctorAuth = require('./routes/doctorsAuth'); 
+// const doctorAuth = require('./routes/doctorsAuth'); 
 
 const userAuth = require('./routes/userAuth'); 
 
