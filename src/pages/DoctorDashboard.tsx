@@ -51,8 +51,6 @@ const DoctorDashboard = () => {
     const doctorData = localStorage.getItem('loggedInDoctor');
     const token = localStorage.getItem('authToken');
 
-    console.log('Doctor data from localStorage:', doctorData);
-    console.log('Token from localStorage:', token);
 
     if (!token || !doctorData) {
       console.log(
@@ -103,8 +101,6 @@ const DoctorDashboard = () => {
           }
         );
 
-        console.log('Response status:', res.status);
-        console.log('Response ok:', res.ok);
 
         if (!res.ok) {
           const errorText = await res.text();
@@ -145,7 +141,6 @@ const DoctorDashboard = () => {
               }
               return await recordRes.json();
             } catch (err) {
-              console.error(`Error fetching record ${recordId}:`, err);
               return null;
             }
           })
@@ -179,8 +174,8 @@ const DoctorDashboard = () => {
 
         setLoading(false);
       } catch (err) {
-        console.error('Error fetching consultations:', err);
-        toast.error('Failed to load consultations');
+        
+        toast.error('No consultations yet');
         setLoading(false);
       }
     };
